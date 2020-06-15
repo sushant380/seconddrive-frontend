@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import {} from './redux/hooks';
 import TopBar from './TopBar';
 import { SearchContainer, ResultContainer, Footer } from '.';
+import { useHandleSearch } from '../common/redux/hooks';
 
-export default function Main() {
+ const Main=props=> {
+  const { children } = props;
+  const {initialLoad,handleSearch}=useHandleSearch();
+  useEffect(() => {
+      if(initialLoad){
+        handleSearch();
+      }
+  });
   return (
    <React.Fragment>
         <TopBar></TopBar>
-        <SearchContainer></SearchContainer>
-        <ResultContainer></ResultContainer>
+          <main >
+            {children}
+          </main>
         <Footer></Footer>
       </React.Fragment>
   );
@@ -17,3 +26,4 @@ export default function Main() {
 
 Main.propTypes = {};
 Main.defaultProps = {};
+export default Main;

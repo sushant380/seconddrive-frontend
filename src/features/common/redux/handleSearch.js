@@ -9,7 +9,6 @@ import {
 import Axios from 'axios';
 
 export function handleSearch(args = {}) {
-  console.log(typeof args);
   return (dispatch) => { // optionally you can have getState as the second argument
     
     dispatch({

@@ -17,13 +17,8 @@ const useStyles=makeStyles(theme=>({
 
 export default function SearchInput() {
   const classes=useStyles();
-  const {initialLoad,handleSearch}=useHandleSearch();
-  console.log(initialLoad);
-  useEffect(() => {
-      if(initialLoad){
-        handleSearch();
-      }
-  });
+  const {handleSearch}=useHandleSearch();
+ 
   return (
     <AppBar className={classes.searchBar} position="static" color="default" elevation={0}>
         <Toolbar>
