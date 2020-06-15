@@ -1,0 +1,1 @@
+export { useHandleViewChange } from './handleViewChange';

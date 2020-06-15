@@ -7,10 +7,10 @@
 // https://medium.com/@nate_wang/a-new-approach-for-managing-redux-actions-91c26ce8b5da.
 
 import initialState from './initialState';
-import { reducer as handleSearchReducer } from './handleSearch';
+import { reducer as handleViewChangeReducer } from './handleViewChange';
 
 const reducers = [
-  handleSearchReducer,
+  handleViewChangeReducer,
 ];
 
 export default function reducer(state = initialState, action) {
@@ -21,6 +21,5 @@ export default function reducer(state = initialState, action) {
       newState = state;
       break;
   }
-  /* istanbul ignore next */
   return reducers.reduce((s, r) => r(s, action), newState);
 }

@@ -1,0 +1,1 @@
+export { useHandleSearch } from './handleSearch';
