@@ -6,16 +6,18 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import AppsIcon from '@material-ui/icons/Apps';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import { useHandleViewChange } from './redux/hooks';
+import { Container } from '@material-ui/core';
 
 const ResultContainer = props => {
   const { viewDeck,handleViewChange } = useHandleViewChange();
   return (
-    <React.Fragment>
+    <Container maxWidth="lg" component="main">
       <ToggleButtonGroup
         value={viewDeck}
         exclusive
         onChange={(event, alignment)=>handleViewChange(alignment)}
         aria-label="text alignment"
+        style={{float:'right'}}
       >
         <ToggleButton value="card" aria-label="left aligned">
           <AppsIcon />
@@ -26,7 +28,7 @@ const ResultContainer = props => {
       </ToggleButtonGroup>
       {viewDeck==='card'?<CarGrid></CarGrid>:<CarTable></CarTable>}
       
-    </React.Fragment>
+    </Container>
   );
 };
 

@@ -14,6 +14,7 @@ const useStyles = makeStyles(theme => ({
   },
   appBar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
+   
   },
   toolbar: {
     flexWrap: 'wrap',
@@ -52,10 +53,11 @@ const useStyles = makeStyles(theme => ({
 export default function TopBar() {
   const classes=useStyles();
   return (
-    <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+    <AppBar position="static" color="default" elevation={0} className={classes.appBar}
+    >
     <Toolbar className={classes.toolbar}>
+    <img src={require('../../images/logo.png')} className="app-logo" alt="logo" />
       <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-        Company name
       </Typography>
       <nav>
         <Link variant="button" color="textPrimary" href="#" className={classes.link}>

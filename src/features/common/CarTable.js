@@ -49,8 +49,7 @@ const CarTable=props=> {
 console.log(searchList);
 
   return (
-    <Container maxWidth="lg" component="main">
-    <Paper className={classes.root}>
+     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -86,7 +85,7 @@ console.log(searchList);
         </Table>
       </TableContainer>
     </Paper>
-    </Container>)
+  );
 };
 
 CarTable.propTypes = {};

@@ -29,12 +29,12 @@ const CarGrid=props =>{
   const {searchList}=props;
   const classes=useStyles();
   return (
-    <Container maxWidth="lg" component="main">
+   
         <Grid container spacing={5} alignItems="flex-end">
           {searchList && searchList.vehicles &&  searchList.vehicles.map((car) => (
             // Enterprise card is full width at sm breakpoint
             <Grid item key={car.id} xs={12} sm={12} md={4}>
-               <Card className={classes.root}>
+               <Card className={classes.root} variant="outlined">
       <CardActionArea>
         <CardMedia
           className={classes.media}
@@ -69,7 +69,7 @@ const CarGrid=props =>{
             </Grid>
           ))}
         </Grid>
-      </Container>
+      
   );
 };
 const mapStateToProps=state=>{
