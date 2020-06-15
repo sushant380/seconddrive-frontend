@@ -8,6 +8,10 @@ import { hot, setConfig } from 'react-hot-loader';
 import store from './common/store';
 import routeConfig from './common/routeConfig';
 import history from './common/history';
+import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from '@material-ui/core';
+
+const theme = createMuiTheme({});
 
 setConfig({
   logLevel: 'debug',
@@ -52,9 +56,11 @@ function renderRouteConfigV3(routes, contextPath) {
 function Root() {
   const children = renderRouteConfigV3(routeConfig, '/');
   return (
+    <ThemeProvider theme={theme}>
     <Provider store={store}>
       <ConnectedRouter history={history}>{children}</ConnectedRouter>
     </Provider>
+    </ThemeProvider>
   );
 }
 
