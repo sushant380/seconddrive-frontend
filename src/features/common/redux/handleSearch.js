@@ -9,13 +9,15 @@ import {
 import Axios from 'axios';
 
 export function handleSearch(args = {}) {
+  console.log(typeof args);
   return (dispatch) => { // optionally you can have getState as the second argument
+    
     dispatch({
       type: COMMON_HANDLE_SEARCH_BEGIN,
     });
-
+    const url=args &&  typeof args!=='string'  &&args.sq!==''?'http://localhost:8080/cars':'http://localhost:8080/cars/search?q='+args;
     const promise = new Promise((resolve, reject) => {
-      const doRequest = fetch('http://localhost:8080/cars',{
+      const doRequest = fetch(url,{
         method:'GET',
         headers:{
           'Content-Type':'application/json'
@@ -50,8 +52,9 @@ export function dismissHandleSearchError() {
 export function useHandleSearch(params) {
   const dispatch = useDispatch();
 
-  const { sq,searchList, handleSearchPending, handleSearchError } = useSelector(
+  const { initialLoad,searchList, handleSearchPending, handleSearchError } = useSelector(
     state => ({
+      initialLoad:state.common.initialLoad,
       searchList:state.common.searchList,
       handleSearchPending: state.common.handleSearchPending,
       handleSearchError: state.common.handleSearchError,
@@ -73,6 +76,7 @@ export function useHandleSearch(params) {
 
   return {
     searchList,
+    initialLoad,
     handleSearch: boundAction,
     handleSearchPending,
     handleSearchError,
@@ -87,6 +91,7 @@ export function reducer(state, action) {
       // Just after a request is sent
       return {
         ...state,
+        initialLoad:false,
         handleSearchPending: true,
         handleSearchError: null,
       };
@@ -95,6 +100,7 @@ export function reducer(state, action) {
       // The request is success
       return {
         ...state,
+        initialLoad:false,
         searchList:action.data,
         handleSearchPending: false,
         handleSearchError: null,
@@ -104,6 +110,7 @@ export function reducer(state, action) {
       // The request is failed
       return {
         ...state,
+        initialLoad:false,
         handleSearchPending: false,
         handleSearchError: action.data.error,
       };
@@ -112,6 +119,7 @@ export function reducer(state, action) {
       // Dismiss the request failure error
       return {
         ...state,
+        initialLoad:false,
         handleSearchError: null,
       };
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { CarGrid, CarTable } from '../common';
 import ToggleButton from '@material-ui/lab/ToggleButton';
@@ -10,6 +10,7 @@ import { Container } from '@material-ui/core';
 
 const ResultContainer = props => {
   const { viewDeck,handleViewChange } = useHandleViewChange();
+  
   return (
     <Container maxWidth="lg" component="main">
       <ToggleButtonGroup

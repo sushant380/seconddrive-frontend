@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import PropTypes from 'prop-types';
 
 import { makeStyles, AppBar, Toolbar, Grid, TextField, Button, Tooltip, IconButton } from '@material-ui/core';
@@ -17,7 +17,13 @@ const useStyles=makeStyles(theme=>({
 
 export default function SearchInput() {
   const classes=useStyles();
-  const {searchList, handleSearch}=useHandleSearch();
+  const {initialLoad,handleSearch}=useHandleSearch();
+  console.log(initialLoad);
+  useEffect(() => {
+      if(initialLoad){
+        handleSearch();
+      }
+  });
   return (
     <AppBar className={classes.searchBar} position="static" color="default" elevation={0}>
         <Toolbar>

@@ -4,9 +4,9 @@
 import { Home } from './';
 import {Main} from '../layout';
 export default {
-  path: 'views',
+  path: '/',
   component: Main,
   childRoutes: [
-    { path: '/', component: Home },
+    { path: 'home', component: Home,isIndex:true },
   ],
 };
