@@ -8,6 +8,7 @@ import { NavLink as RouterLink } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import { } from './redux/hooks';
 import { connect } from 'react-redux';
+import CustomRouterLink from './CustomRouterLink';
 const useStyles = makeStyles(theme => ({
   cardHeader: {
     backgroundColor:
@@ -26,14 +27,6 @@ const useStyles = makeStyles(theme => ({
     height: 140,
   },
 }));
-const CustomRouterLink = forwardRef((props, ref) => (
-  <div
-    ref={ref}
-    style={{ flexGrow: 1 }}
-  >
-    <RouterLink {...props} />
-  </div>
-));
 const CarGrid = props => {
   const { searchList } = props;
   const classes = useStyles();

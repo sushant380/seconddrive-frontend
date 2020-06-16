@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 // import PropTypes from 'prop-types';
 import { } from './redux/hooks';
 import { Grid, Paper, makeStyles, Container, Box, Typography, Divider, Button, Chip } from '@material-ui/core';
-import { connect } from 'react-redux';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import DoneIcon from '@material-ui/icons/Done';
+
 import { useHandleSearch } from '../common/redux/hooks';
 import queryString from 'query-string';
 import noimage from '../../images/noimage.jpeg';
-const useStyles = makeStyles(theme=>({
+import { Link } from 'react-router-dom';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import CustomRouterLink from '../common/CustomRouterLink';
+
+const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
   },
   paper: {
 
   },
-  backgroundNoImage:{
-    background:`url(${noimage})`,
+  backgroundNoImage: {
+    background: `url(${noimage})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 500,
     backgroundPosition: 'center',
@@ -37,9 +40,13 @@ const VehicleDetails = props => {
   }
   return (
     <Container maxWidth="lg" component="main">
+
       <Grid container spacing={1}>
         <Grid item xs={12} md={6} className={classes.backgroundNoImage}>
-          
+
+          <Button  component={CustomRouterLink} to={`/`}>
+            <ArrowBackIcon></ArrowBackIcon> Back to search
+          </Button>
         </Grid>
         <Grid item xs={12} md={6}>
           <Box component="div" p={4}>

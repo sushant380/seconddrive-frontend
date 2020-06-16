@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import {} from './redux/hooks';
-import TopBar from './TopBar';
-import { SearchContainer, ResultContainer, Footer } from '.';
+import {TopBar, Footer } from '.';
 import { useHandleSearch } from '../common/redux/hooks';
 
  const Main=props=> {

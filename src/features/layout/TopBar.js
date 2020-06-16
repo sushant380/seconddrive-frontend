@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import * as actions from './redux/actions';
-import { Toolbar, Button, Typography,  withStyles, Link, makeStyles } from '@material-ui/core';
-
+import { Toolbar, Typography, withStyles, Link, makeStyles, Badge, Avatar } from '@material-ui/core';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import IconButton from '@material-ui/core/IconButton';
 const useStyles = makeStyles(theme => ({
   '@global': {
     ul: {
@@ -15,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
   appBar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
-   
+
   },
   toolbar: {
     flexWrap: 'wrap',
@@ -52,30 +54,27 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function TopBar() {
-  const classes=useStyles();
+  const classes = useStyles();
   return (
     <AppBar position="static" color="default" elevation={0} className={classes.appBar}
     >
-    <Toolbar className={classes.toolbar}>
-    <img src={require('../../images/logo.png')} className="app-logo" alt="logo" />
-      <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-      </Typography>
-      <nav>
-        <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-          Features
-        </Link>
-        <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-          Enterprise
-        </Link>
-        <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-          Support
-        </Link>
-      </nav>
-      <Button href="#" color="primary" variant="outlined" className={classes.link}>
-        Login
-      </Button>
-    </Toolbar>
-  </AppBar>
+      <Toolbar className={classes.toolbar}>
+        <img src={require('../../images/logo.png')} className="app-logo" alt="logo" />
+        <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
+        </Typography>
+        <nav>
+        <IconButton aria-label="delete">
+          <Badge badgeContent={4} color="error">
+            <ShoppingCartIcon />
+          </Badge>
+          </IconButton>
+          <IconButton aria-label="delete">
+             <AccountCircleIcon></AccountCircleIcon>
+           </IconButton>
+      
+        </nav>
+      </Toolbar>
+    </AppBar>
   );
 };
 
