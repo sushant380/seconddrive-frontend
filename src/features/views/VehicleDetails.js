@@ -133,11 +133,7 @@ const VehicleDetails = (props) => {
 
               <p >Description</p>
 
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Et dolor suscipit libero eos atque quia ipsa
-      sint voluptatibus!
-        Beatae sit assumenda asperiores iure at maxime atque
-        repellendus maiores quia sapiente.</p>
+              <p>Need to add something</p>
 
               <Button
                 variant="contained"
