@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Footer } from '../../../src/features/layout/Footer';
+import {shallow} from 'enzyme';
+import {Footer} from '../../../src/features/layout/Footer';
 
 describe('layout/Footer', () => {
   it('renders node with correct class name', () => {
@@ -9,11 +9,11 @@ describe('layout/Footer', () => {
       actions: {},
     };
     const renderedComponent = shallow(
-      <Footer {...props} />
+        <Footer {...props} />,
     );
 
     expect(
-      renderedComponent.find('.layout-footer').length
+        renderedComponent.find('.layout-footer').length,
     ).toBe(1);
   });
 });

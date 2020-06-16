@@ -1,15 +1,14 @@
-import React, { useState, forwardRef } from 'react';
-import PropTypes from 'prop-types';
-import { Grid, Card, CardContent, Typography, CardActions, Button, CardHeader, withStyles, makeStyles, CardMedia, CardActionArea } from '@material-ui/core';
-import { StarSharp as StarIcon } from '@material-ui/icons'
-import { useHandleSearch } from './redux/handleSearch';
-import { NavLink as RouterLink } from 'react-router-dom';
+import React from 'react';
+
+import {Grid, Card, CardContent, Typography, makeStyles, CardMedia, CardActionArea,
+} from '@material-ui/core';
+
 
 // import PropTypes from 'prop-types';
 import { } from './redux/hooks';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import CustomRouterLink from './CustomRouterLink';
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   cardHeader: {
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
@@ -27,8 +26,8 @@ const useStyles = makeStyles(theme => ({
     height: 140,
   },
 }));
-const CarGrid = props => {
-  const { searchList } = props;
+const CarGrid = (props) => {
+  const {searchList} = props;
   const classes = useStyles();
   return (
 
@@ -65,9 +64,9 @@ const CarGrid = props => {
 
   );
 };
-const mapStateToProps = state => {
-  return { searchList: state.common.searchList };
-}
+const mapStateToProps = (state) => {
+  return {searchList: state.common.searchList};
+};
 CarGrid.propTypes = {};
 CarGrid.defaultProps = {};
 export default connect(mapStateToProps)(CarGrid);

@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { SearchInput } from '../../../src/features/common/SearchInput';
+import {shallow} from 'enzyme';
+import {SearchInput} from '../../../src/features/common/SearchInput';
 
 describe('common/SearchInput', () => {
   it('renders node with correct class name', () => {
@@ -9,11 +9,11 @@ describe('common/SearchInput', () => {
       actions: {},
     };
     const renderedComponent = shallow(
-      <SearchInput {...props} />
+        <SearchInput {...props} />,
     );
 
     expect(
-      renderedComponent.find('.common-search-input').length
+        renderedComponent.find('.common-search-input').length,
     ).toBe(1);
   });
 });

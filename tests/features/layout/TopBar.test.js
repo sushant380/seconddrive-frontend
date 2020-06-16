@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { TopBar } from '../../../src/features/layout/TopBar';
+import {shallow} from 'enzyme';
+import {TopBar} from '../../../src/features/layout/TopBar';
 
 describe('layout/TopBar', () => {
   it('renders node with correct class name', () => {
@@ -9,11 +9,11 @@ describe('layout/TopBar', () => {
       actions: {},
     };
     const renderedComponent = shallow(
-      <TopBar {...props} />
+        <TopBar {...props} />,
     );
 
     expect(
-      renderedComponent.find('.layout-top-bar').length
+        renderedComponent.find('.layout-top-bar').length,
     ).toBe(1);
   });
 });

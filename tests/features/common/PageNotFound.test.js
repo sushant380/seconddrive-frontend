@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { PageNotFound } from '../../../src/features/common';
+import {shallow} from 'enzyme';
+import {PageNotFound} from '../../../src/features/common';
 
 describe('common/PageNotFound', () => {
   it('renders node with correct class name', () => {

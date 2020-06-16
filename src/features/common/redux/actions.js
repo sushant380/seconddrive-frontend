@@ -1,1 +1,1 @@
-export { handleSearch, dismissHandleSearchError } from './handleSearch';
+export {handleSearch, dismissHandleSearchError} from './handleSearch';

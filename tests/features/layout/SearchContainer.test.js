@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { SearchContainer } from '../../../src/features/layout/SearchContainer';
+import {shallow} from 'enzyme';
+import {SearchContainer} from '../../../src/features/layout/SearchContainer';
 
 describe('layout/SearchContainer', () => {
   it('renders node with correct class name', () => {
@@ -9,11 +9,11 @@ describe('layout/SearchContainer', () => {
       actions: {},
     };
     const renderedComponent = shallow(
-      <SearchContainer {...props} />
+        <SearchContainer {...props} />,
     );
 
     expect(
-      renderedComponent.find('.layout-search-container').length
+        renderedComponent.find('.layout-search-container').length,
     ).toBe(1);
   });
 });

@@ -126,5 +126,8 @@
       "jsx",
       "node"
     ]
+  },
+  "devDependencies": {
+    "eslint-plugin-unused-imports": "^0.1.3"
   }
 }

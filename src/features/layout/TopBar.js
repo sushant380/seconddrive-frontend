@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import PropTypes from 'prop-types';
-import PropTypes from 'prop-types';
+
 import AppBar from '@material-ui/core/AppBar';
-import * as actions from './redux/actions';
-import { Toolbar, Typography, withStyles, Link, makeStyles, Badge, Avatar } from '@material-ui/core';
+
+import {Toolbar, Typography, makeStyles, Badge} from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import IconButton from '@material-ui/core/IconButton';
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   '@global': {
     ul: {
       margin: 0,
@@ -15,33 +15,33 @@ const useStyles = makeStyles(theme => ({
       listStyle: 'none',
     },
   },
-  appBar: {
+  'appBar': {
     borderBottom: `1px solid ${theme.palette.divider}`,
 
   },
-  toolbar: {
+  'toolbar': {
     flexWrap: 'wrap',
   },
-  toolbarTitle: {
+  'toolbarTitle': {
     flexGrow: 1,
   },
-  link: {
+  'link': {
     margin: theme.spacing(1, 1.5),
   },
-  heroContent: {
+  'heroContent': {
     padding: theme.spacing(8, 0, 6),
   },
-  cardHeader: {
+  'cardHeader': {
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
   },
-  cardPricing: {
+  'cardPricing': {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'baseline',
     marginBottom: theme.spacing(2),
   },
-  footer: {
+  'footer': {
     borderTop: `1px solid ${theme.palette.divider}`,
     marginTop: theme.spacing(8),
     paddingTop: theme.spacing(3),
@@ -63,15 +63,15 @@ export default function TopBar() {
         <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
         </Typography>
         <nav>
-        <IconButton aria-label="delete">
-          <Badge badgeContent={4} color="error">
-            <ShoppingCartIcon />
-          </Badge>
+          <IconButton aria-label="delete">
+            <Badge badgeContent={4} color="error">
+              <ShoppingCartIcon />
+            </Badge>
           </IconButton>
           <IconButton aria-label="delete">
-             <AccountCircleIcon></AccountCircleIcon>
-           </IconButton>
-      
+            <AccountCircleIcon></AccountCircleIcon>
+          </IconButton>
+
         </nav>
       </Toolbar>
     </AppBar>

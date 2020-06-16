@@ -1,25 +1,25 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 // import PropTypes from 'prop-types';
 import {} from './redux/hooks';
-import {TopBar, Footer } from '.';
-import { useHandleSearch } from '../common/redux/hooks';
+import {TopBar, Footer} from '.';
+import {useHandleSearch} from '../common/redux/hooks';
 
- const Main=props=> {
-  const { children } = props;
-  const {initialLoad,handleSearch}=useHandleSearch();
+const Main=(props)=> {
+  const {children} = props;
+  const {initialLoad, handleSearch}=useHandleSearch();
   useEffect(() => {
-      if(initialLoad){
-        handleSearch();
-      }
+    if (initialLoad) {
+      handleSearch();
+    }
   });
   return (
-   <React.Fragment>
-        <TopBar></TopBar>
-          <main >
-            {children}
-          </main>
-        <Footer></Footer>
-      </React.Fragment>
+    <React.Fragment>
+      <TopBar></TopBar>
+      <main >
+        {children}
+      </main>
+      <Footer></Footer>
+    </React.Fragment>
   );
 };
 

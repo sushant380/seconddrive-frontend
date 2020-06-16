@@ -1,41 +1,42 @@
-import { useEffect, useCallback } from 'react';
-import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import {useEffect, useCallback} from 'react';
+import {useDispatch, useSelector, shallowEqual} from 'react-redux';
+import Config from '../../../Config.json';
 import {
   COMMON_HANDLE_SEARCH_BEGIN,
   COMMON_HANDLE_SEARCH_SUCCESS,
   COMMON_HANDLE_SEARCH_FAILURE,
   COMMON_HANDLE_SEARCH_DISMISS_ERROR,
 } from './constants';
-import Axios from 'axios';
+
 
 export function handleSearch(args = {}) {
   return (dispatch) => { // optionally you can have getState as the second argument
-    
     dispatch({
       type: COMMON_HANDLE_SEARCH_BEGIN,
     });
-    const url=args &&  typeof args!=='string'  &&args.sq!==''?'http://localhost:8080/cars':'http://localhost:8080/cars/search?q='+args;
+    const url=args && typeof args!=='string' &&
+    args.sq!==''?`${Config.backend.url}/cars`:
+    `${Config.backend.url}/cars/search?q=${args}`;
     const promise = new Promise((resolve, reject) => {
-      const doRequest = fetch(url,{
-        method:'GET',
-        headers:{
-          'Content-Type':'application/json'
-        }
-      }).then(response => response.json())
-      .then(data=>{
-        
-        dispatch({
-          type: COMMON_HANDLE_SEARCH_SUCCESS,
-          data: data,
-        });
-        resolve(data);
-      }).catch(err=>{
-        dispatch({
-          type: COMMON_HANDLE_SEARCH_FAILURE,
-          data: { error: err },
-        });
-        reject(err);
-      });
+      fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then((response) => response.json())
+          .then((data)=>{
+            dispatch({
+              type: COMMON_HANDLE_SEARCH_SUCCESS,
+              data: data,
+            });
+            resolve(data);
+          }).catch((err)=>{
+            dispatch({
+              type: COMMON_HANDLE_SEARCH_FAILURE,
+              data: {error: err},
+            });
+            reject(err);
+          });
     });
 
     return promise;
@@ -51,18 +52,18 @@ export function dismissHandleSearchError() {
 export function useHandleSearch(params) {
   const dispatch = useDispatch();
 
-  const { initialLoad,searchList, handleSearchPending, handleSearchError } = useSelector(
-    state => ({
-      initialLoad:state.common.initialLoad,
-      searchList:state.common.searchList,
-      handleSearchPending: state.common.handleSearchPending,
-      handleSearchError: state.common.handleSearchError,
-    }),
-    shallowEqual,
+  const {initialLoad, searchList, handleSearchPending, handleSearchError} = useSelector(
+      (state) => ({
+        initialLoad: state.common.initialLoad,
+        searchList: state.common.searchList,
+        handleSearchPending: state.common.handleSearchPending,
+        handleSearchError: state.common.handleSearchError,
+      }),
+      shallowEqual,
   );
 
   const boundAction = useCallback((...args) => {
-      return dispatch(handleSearch(...args));
+    return dispatch(handleSearch(...args));
   }, [dispatch]);
 
   useEffect(() => {
@@ -84,13 +85,12 @@ export function useHandleSearch(params) {
 }
 
 export function reducer(state, action) {
-  
   switch (action.type) {
     case COMMON_HANDLE_SEARCH_BEGIN:
       // Just after a request is sent
       return {
         ...state,
-        initialLoad:false,
+        initialLoad: false,
         handleSearchPending: true,
         handleSearchError: null,
       };
@@ -99,8 +99,8 @@ export function reducer(state, action) {
       // The request is success
       return {
         ...state,
-        initialLoad:false,
-        searchList:action.data,
+        initialLoad: false,
+        searchList: action.data,
         handleSearchPending: false,
         handleSearchError: null,
       };
@@ -109,7 +109,7 @@ export function reducer(state, action) {
       // The request is failed
       return {
         ...state,
-        initialLoad:false,
+        initialLoad: false,
         handleSearchPending: false,
         handleSearchError: action.data.error,
       };
@@ -118,7 +118,7 @@ export function reducer(state, action) {
       // Dismiss the request failure error
       return {
         ...state,
-        initialLoad:false,
+        initialLoad: false,
         handleSearchError: null,
       };
 

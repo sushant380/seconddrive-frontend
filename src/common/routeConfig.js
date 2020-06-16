@@ -1,5 +1,5 @@
-import { App } from '../features/home';
-import { PageNotFound } from '../features/common';
+import {App} from '../features/home';
+import {PageNotFound} from '../features/common';
 import homeRoute from '../features/home/route';
 import commonRoute from '../features/common/route';
 import _ from 'lodash';
@@ -7,7 +7,8 @@ import layoutRoute from '../features/layout/route';
 import viewsRoute from '../features/views/route';
 
 // NOTE: DO NOT CHANGE the 'childRoutes' name and the declaration pattern.
-// This is used for Rekit cmds to register routes config for new features, and remove config when remove features, etc.
+// This is used for Rekit cmds to register routes config for new features,
+// and remove config when remove features, etc.
 const childRoutes = [
   homeRoute,
   commonRoute,
@@ -20,8 +21,8 @@ const routes = [{
   component: App,
   childRoutes: [
     ...childRoutes,
-    { path: '*', name: 'Page not found', component: PageNotFound },
-  ].filter(r => r.component || (r.childRoutes && r.childRoutes.length > 0)),
+    {path: '*', name: 'Page not found', component: PageNotFound},
+  ].filter((r) => r.component || (r.childRoutes && r.childRoutes.length > 0)),
 }];
 
 // Handle isIndex property of route config:
@@ -31,9 +32,9 @@ function handleIndexRoute(route) {
     return;
   }
 
-  const indexRoute = _.find(route.childRoutes, (child => child.isIndex));
+  const indexRoute = _.find(route.childRoutes, ((child) => child.isIndex));
   if (indexRoute) {
-    const first = { ...indexRoute };
+    const first = {...indexRoute};
     first.path = '';
     first.exact = true;
     first.autoIndexRoute = true; // mark it so that the simple nav won't show it.

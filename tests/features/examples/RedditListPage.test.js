@@ -1,11 +1,11 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { RedditListPage } from '../../../src/features/examples/RedditListPage';
+import {shallow} from 'enzyme';
+import {RedditListPage} from '../../../src/features/examples/RedditListPage';
 
 describe('examples/RedditListPage', () => {
   it('renders node with correct class name', () => {
     const props = {
-      examples: { redditList: [] },
+      examples: {redditList: []},
       actions: {},
     };
     const renderedComponent = shallow(<RedditListPage {...props} />);
@@ -13,9 +13,9 @@ describe('examples/RedditListPage', () => {
     expect(renderedComponent.find('.examples-reddit-list-page').length).toBe(1);
     expect(renderedComponent.find('.no-items-tip').length).toBe(1);
   });
-  it("renders list items when there's data", () => {
+  it('renders list items when there\'s data', () => {
     const props = {
-      examples: { redditList: [{ data: { id: 'id', title: 'title', url: 'url' } }] },
+      examples: {redditList: [{data: {id: 'id', title: 'title', url: 'url'}}]},
       actions: {},
     };
     const renderedComponent = shallow(<RedditListPage {...props} />);

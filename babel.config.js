@@ -4,5 +4,5 @@ module.exports = function(api) {
   if (api.env('development')) {
     plugins.push('react-hot-loader/babel');
   }
-  return { presets, plugins };
+  return {presets, plugins};
 };

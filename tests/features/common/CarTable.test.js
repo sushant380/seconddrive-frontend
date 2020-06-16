@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { CarTable } from '../../../src/features/common/CarTable';
+import {shallow} from 'enzyme';
+import {CarTable} from '../../../src/features/common/CarTable';
 
 describe('common/CarTable', () => {
   it('renders node with correct class name', () => {
@@ -9,11 +9,11 @@ describe('common/CarTable', () => {
       actions: {},
     };
     const renderedComponent = shallow(
-      <CarTable {...props} />
+        <CarTable {...props} />,
     );
 
     expect(
-      renderedComponent.find('.common-car-table').length
+        renderedComponent.find('.common-car-table').length,
     ).toBe(1);
   });
 });
