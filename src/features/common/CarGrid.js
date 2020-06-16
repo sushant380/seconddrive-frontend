@@ -1,12 +1,13 @@
 import React from 'react';
 
-import {Grid, Card, CardContent, Typography, makeStyles, CardMedia, CardActionArea,
+import {
+  Grid, Card, CardContent, Typography, makeStyles, CardMedia, CardActionArea, CardHeader, Chip, Avatar, IconButton,
 } from '@material-ui/core';
 
 
 // import PropTypes from 'prop-types';
 import { } from './redux/hooks';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import CustomRouterLink from './CustomRouterLink';
 const useStyles = makeStyles((theme) => ({
   cardHeader: {
@@ -25,9 +26,12 @@ const useStyles = makeStyles((theme) => ({
   media: {
     height: 140,
   },
+  squereChip: {
+    borderRadius: 0,
+  },
 }));
 const CarGrid = (props) => {
-  const {searchList} = props;
+  const { searchList } = props;
   const classes = useStyles();
   return (
 
@@ -36,12 +40,20 @@ const CarGrid = (props) => {
         // Enterprise card is full width at sm breakpoint
         <Grid item key={car.id} xs={12} sm={12} md={4}>
           <Card className={classes.root} variant="outlined">
+
             <CardActionArea component={CustomRouterLink} to={`/vehicle?id=${car._id}`}>
               <CardMedia
                 className={classes.media}
                 image="https://i2.wp.com/authenticautosales.com/wp-content/uploads/2020/03/nocarimage.jpg"
-                title={car.model}
-              />
+                title={car.model}>
+                {car.licensed &&
+                  <Chip
+                    className={classes.squereChip}
+                    label="Licensed"
+                    color="secondary"
+                  />
+                }
+              </CardMedia>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
                   {car.model}
@@ -65,7 +77,7 @@ const CarGrid = (props) => {
   );
 };
 const mapStateToProps = (state) => {
-  return {searchList: state.common.searchList};
+  return { searchList: state.common.searchList };
 };
 CarGrid.propTypes = {};
 CarGrid.defaultProps = {};

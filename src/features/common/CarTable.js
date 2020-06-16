@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import {} from './redux/hooks';
-import {makeStyles} from '@material-ui/core/styles';
+import { } from './redux/hooks';
+import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -10,25 +10,38 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 
 import TableRow from '@material-ui/core/TableRow';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { Chip } from '@material-ui/core';
 
 
 const useStyles = makeStyles({
   root: {
     width: '100%',
   },
+  squereChip: {
+    borderRadius: 0,
+  },
 });
 
 
 const columns = [
-  {id: '_id', minWidth: 170},
-  {id: 'model', label: 'Model', minWidth: 170},
-  {id: 'make', label: 'Make', minWidth: 100},
+  { id: '_id', minWidth: 170 },
+  { id: 'model', label: 'Model', minWidth: 170 },
+  { id: 'make', label: 'Make', minWidth: 100 },
   {
     id: 'licensed',
     label: 'Licensed',
     minWidth: 170,
-    format: (value) => value?'Yes':'No',
+    format: (value, classes) => value ?
+      <Chip
+        className={classes.squereChip}
+        label="Licensed"
+        color="secondary"
+      />
+      : <Chip
+        className={classes.squereChip}
+        label="Not licensed"
+      />,
   },
   {
     id: 'price',
@@ -43,9 +56,9 @@ const columns = [
 
   },
 ];
-const CarTable=(props)=> {
+const CarTable = (props) => {
   const classes = useStyles();
-  const {searchList}=props;
+  const { searchList } = props;
   console.log(searchList);
 
   return (
@@ -57,7 +70,7 @@ const CarTable=(props)=> {
               {columns.map((column) => (
                 <TableCell
                   key={column.id}
-                  style={{minWidth: column.minWidth}}
+                  style={{ minWidth: column.minWidth }}
                 >
                   {column.label}
                 </TableCell>
@@ -67,21 +80,21 @@ const CarTable=(props)=> {
           <TableBody>
             {searchList && searchList.vehicles && searchList.vehicles.map((row) => {
               return (
-                <TableRow hover tabIndex={-1} key={row.id} onClick={()=>{
+                <TableRow hover tabIndex={-1} key={row.id} onClick={() => {
                   window.location.assign(`/vehicle?id=${row._id}`);
                 }}>
                   {columns.map((column) => {
                     const value = row[column.id];
                     return (
-                      column.id==='_id'?
-                      <TableCell key={column.id} align={column.align}>
-                        <img alt="" width={120}
-                          src="https://i2.wp.com/authenticautosales.com/wp-content/uploads/2020/03/nocarimage.jpg"/>
-                      </TableCell>:
-                      <TableCell key={column.id} align={column.align}>
-                        {column.format && (typeof value === 'number' ||
-                        typeof value==='boolean') ? column.format(value) : value}
-                      </TableCell>
+                      column.id === '_id' ?
+                        <TableCell key={column.id} align={column.align}>
+                          <img alt="" width={120}
+                            src="https://i2.wp.com/authenticautosales.com/wp-content/uploads/2020/03/nocarimage.jpg" />
+                        </TableCell> :
+                        <TableCell key={column.id} align={column.align}>
+                          {column.format && (typeof value === 'number' ||
+                            typeof value === 'boolean') ? column.format(value, classes) : value}
+                        </TableCell>
                     );
                   })}
                 </TableRow>
@@ -96,7 +109,7 @@ const CarTable=(props)=> {
 
 CarTable.propTypes = {};
 CarTable.defaultProps = {};
-const mapStateToProps=(state)=>{
+const mapStateToProps = (state) => {
   return {
     searchList: state.common.searchList,
   };

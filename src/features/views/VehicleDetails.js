@@ -39,35 +39,6 @@ const useStyles = makeStyles((theme) => ({
     height: 300,
   },
 }));
-const getMapBounds = (map, maps, places) => {
-  const bounds = new maps.LatLngBounds();
-
-  places.forEach((place) => {
-    bounds.extend(new maps.LatLng(
-        place.lat,
-        place.long,
-    ));
-  });
-  return bounds;
-};
-
-// Re-center map when resizing the window
-const bindResizeListener = (map, maps, bounds) => {
-  maps.event.addDomListenerOnce(map, 'idle', () => {
-    maps.event.addDomListener(window, 'resize', () => {
-      map.fitBounds(bounds);
-    });
-  });
-};
-
-const apiIsLoaded = (map, maps, places) => {
-  // Get bounds by our places
-  const bounds = getMapBounds(map, maps, places);
-  // Fit map to bounds
-  map.fitBounds(bounds);
-  // Bind the resize listener
-  bindResizeListener(map, maps, bounds);
-};
 const VehicleDetails = (props) => {
   const classes = useStyles();
   const {searchList} = useHandleSearch();
