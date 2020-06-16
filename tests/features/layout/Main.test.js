@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Main } from '../../../src/features/layout/Main';
+import {shallow} from 'enzyme';
+import {Main} from '../../../src/features/layout/Main';
 
 describe('layout/Main', () => {
   it('renders node with correct class name', () => {
@@ -9,11 +9,11 @@ describe('layout/Main', () => {
       actions: {},
     };
     const renderedComponent = shallow(
-      <Main {...props} />
+        <Main {...props} />,
     );
 
     expect(
-      renderedComponent.find('.layout-main').length
+        renderedComponent.find('.layout-main').length,
     ).toBe(1);
   });
 });

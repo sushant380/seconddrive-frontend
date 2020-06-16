@@ -1,0 +1,8 @@
+{
+    "google":{
+        "key":"YOUR_API_KEY"
+    },
+    "backend":{
+        "url":"http://localhost:8080"
+    }
+}

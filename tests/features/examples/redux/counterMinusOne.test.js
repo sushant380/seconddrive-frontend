@@ -13,13 +13,13 @@ describe('examples/redux/counterMinusOne', () => {
   });
 
   it('handles action type EXAMPLES_COUNTER_MINUS_ONE correctly', () => {
-    const prevState = { count: 3 };
+    const prevState = {count: 3};
     // TODO: use real expected state.
-    const expectedState = { count: 2 };
+    const expectedState = {count: 2};
 
     const state = reducer(
-      prevState,
-      { type: EXAMPLES_COUNTER_MINUS_ONE }
+        prevState,
+        {type: EXAMPLES_COUNTER_MINUS_ONE},
     );
     // Should be immutable
     expect(state).not.toBe(prevState);

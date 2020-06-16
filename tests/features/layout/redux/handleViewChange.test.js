@@ -15,8 +15,8 @@ describe('layout/redux/handleViewChange', () => {
   it('handles action type LAYOUT_HANDLE_VIEW_CHANGE correctly', () => {
     const prevState = {};
     const state = reducer(
-      prevState,
-      { type: LAYOUT_HANDLE_VIEW_CHANGE }
+        prevState,
+        {type: LAYOUT_HANDLE_VIEW_CHANGE},
     );
     // Should be immutable
     expect(state).not.toBe(prevState);

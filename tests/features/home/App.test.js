@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { App } from '../../../src/features/home';
+import {shallow} from 'enzyme';
+import {App} from '../../../src/features/home';
 
 describe('home/App', () => {
   it('renders node with correct class name', () => {

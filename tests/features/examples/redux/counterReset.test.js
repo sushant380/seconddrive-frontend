@@ -13,11 +13,11 @@ describe('examples/redux/counterReset', () => {
   });
 
   it('handles action type EXAMPLES_COUNTER_RESET correctly', () => {
-    const prevState = { count: 10 };
-    const expectedState = { count: 0 };
+    const prevState = {count: 10};
+    const expectedState = {count: 0};
     const state = reducer(
-      prevState,
-      { type: EXAMPLES_COUNTER_RESET }
+        prevState,
+        {type: EXAMPLES_COUNTER_RESET},
     );
     expect(state).not.toBe(prevState); // should be immutable
     expect(state).toEqual(expectedState); // TODO: replace this line with real case.

@@ -1,19 +1,19 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import {TopBar} from '../../../src/features/layout/TopBar';
+import {VehicleDetails} from '../../../src/features/views/VehicleDetails';
 
-describe('layout/TopBar', () => {
+describe('views/VehicleDetails', () => {
   it('renders node with correct class name', () => {
     const props = {
-      layout: {},
+      views: {},
       actions: {},
     };
     const renderedComponent = shallow(
-        <TopBar {...props} />,
+        <VehicleDetails {...props} />,
     );
 
     expect(
-        renderedComponent.find('.layout-top-bar').length,
+        renderedComponent.find('.views-vehicle-details').length,
     ).toBe(1);
   });
 });

@@ -1,1 +1,1 @@
-export { handleViewChange } from './handleViewChange';
+export {handleViewChange} from './handleViewChange';

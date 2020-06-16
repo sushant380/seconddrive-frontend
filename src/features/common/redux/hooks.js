@@ -1,1 +1,1 @@
-export { useHandleSearch } from './handleSearch';
+export {useHandleSearch} from './handleSearch';

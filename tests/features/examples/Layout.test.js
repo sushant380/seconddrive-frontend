@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Layout } from '../../../src/features/examples';
+import {shallow} from 'enzyme';
+import {Layout} from '../../../src/features/examples';
 
 describe('examples/Layout', () => {
   it('renders node with correct class name', () => {

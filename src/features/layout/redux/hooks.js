@@ -1,1 +1,1 @@
-export { useHandleViewChange } from './handleViewChange';
+export {useHandleViewChange} from './handleViewChange';

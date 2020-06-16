@@ -1,6 +1,6 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import {createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
-import { routerMiddleware } from 'connected-react-router';
+import {routerMiddleware} from 'connected-react-router';
 import history from './history';
 import rootReducer from './rootReducer';
 
@@ -9,13 +9,13 @@ const router = routerMiddleware(history);
 // NOTE: Do not change middleares delaration pattern since rekit plugins may register middlewares to it.
 const middlewares = [thunk, router];
 
-let devToolsExtension = f => f;
+let devToolsExtension = (f) => f;
 
 /* istanbul ignore if  */
 if (process.env.NODE_ENV === 'development') {
-  const { createLogger } = require('redux-logger');
+  const {createLogger} = require('redux-logger');
 
-  const logger = createLogger({ collapsed: true });
+  const logger = createLogger({collapsed: true});
   middlewares.push(logger);
 
   if (window.__REDUX_DEVTOOLS_EXTENSION__) {
@@ -25,12 +25,12 @@ if (process.env.NODE_ENV === 'development') {
 
 function configureStore(initialState) {
   const store = createStore(
-    rootReducer,
-    initialState,
-    compose(
-      applyMiddleware(...middlewares),
-      devToolsExtension,
-    ),
+      rootReducer,
+      initialState,
+      compose(
+          applyMiddleware(...middlewares),
+          devToolsExtension,
+      ),
   );
 
   /* istanbul ignore if  */

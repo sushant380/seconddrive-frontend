@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { ResultContainer } from '../../../src/features/layout/ResultContainer';
+import {shallow} from 'enzyme';
+import {ResultContainer} from '../../../src/features/layout/ResultContainer';
 
 describe('layout/ResultContainer', () => {
   it('renders node with correct class name', () => {
@@ -9,11 +9,11 @@ describe('layout/ResultContainer', () => {
       actions: {},
     };
     const renderedComponent = shallow(
-      <ResultContainer {...props} />
+        <ResultContainer {...props} />,
     );
 
     expect(
-      renderedComponent.find('.layout-result-container').length
+        renderedComponent.find('.layout-result-container').length,
     ).toBe(1);
   });
 });

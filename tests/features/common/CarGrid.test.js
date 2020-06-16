@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { CarGrid } from '../../../src/features/common/CarGrid';
+import {shallow} from 'enzyme';
+import {CarGrid} from '../../../src/features/common/CarGrid';
 
 describe('common/CarGrid', () => {
   it('renders node with correct class name', () => {
@@ -9,11 +9,11 @@ describe('common/CarGrid', () => {
       actions: {},
     };
     const renderedComponent = shallow(
-      <CarGrid {...props} />
+        <CarGrid {...props} />,
     );
 
     expect(
-      renderedComponent.find('.common-car-grid').length
+        renderedComponent.find('.common-car-grid').length,
     ).toBe(1);
   });
 });

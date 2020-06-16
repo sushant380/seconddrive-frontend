@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { CounterPage } from '../../../src/features/examples/CounterPage';
+import {shallow} from 'enzyme';
+import {CounterPage} from '../../../src/features/examples/CounterPage';
 
 describe('examples/CounterPage', () => {
   it('renders node with correct class name', () => {
@@ -23,7 +23,7 @@ describe('examples/CounterPage', () => {
       },
     };
     const renderedComponent = shallow(
-      <CounterPage {...pageProps} />
+        <CounterPage {...pageProps} />,
     );
     renderedComponent.find('.btn-plus-one').simulate('click');
     renderedComponent.find('.btn-minus-one').simulate('click');

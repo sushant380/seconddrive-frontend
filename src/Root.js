@@ -1,15 +1,15 @@
 /* This is the Root component mainly initializes Redux and React Router. */
 
 import React from 'react';
-import { Provider } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
-import { ConnectedRouter } from 'connected-react-router';
-import { hot, setConfig } from 'react-hot-loader';
+import {Provider} from 'react-redux';
+import {Switch, Route} from 'react-router-dom';
+import {ConnectedRouter} from 'connected-react-router';
+import {hot, setConfig} from 'react-hot-loader';
 import store from './common/store';
 import routeConfig from './common/routeConfig';
 import history from './common/history';
-import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme } from '@material-ui/core';
+import {ThemeProvider} from '@material-ui/styles';
+import {createMuiTheme} from '@material-ui/core';
 
 const theme = createMuiTheme({});
 
@@ -32,22 +32,22 @@ function renderRouteConfigV3(routes, contextPath) {
     if (item.component && item.childRoutes) {
       const childRoutes = renderRouteConfigV3(item.childRoutes, newContextPath);
       children.push(
-        <Route
-          key={newContextPath}
-          render={props => <item.component {...props}>{childRoutes}</item.component>}
-          path={newContextPath}
-        />,
+          <Route
+            key={newContextPath}
+            render={(props) => <item.component {...props}>{childRoutes}</item.component>}
+            path={newContextPath}
+          />,
       );
     } else if (item.component) {
       children.push(
-        <Route key={newContextPath} component={item.component} path={newContextPath} exact />,
+          <Route key={newContextPath} component={item.component} path={newContextPath} exact />,
       );
     } else if (item.childRoutes) {
-      item.childRoutes.forEach(r => renderRoute(r, newContextPath));
+      item.childRoutes.forEach((r) => renderRoute(r, newContextPath));
     }
   };
 
-  routes.forEach(item => renderRoute(item, contextPath));
+  routes.forEach((item) => renderRoute(item, contextPath));
 
   // Use Switch so that only the first matched route is rendered.
   return <Switch>{children}</Switch>;
@@ -57,9 +57,9 @@ function Root() {
   const children = renderRouteConfigV3(routeConfig, '/');
   return (
     <ThemeProvider theme={theme}>
-    <Provider store={store}>
-      <ConnectedRouter history={history}>{children}</ConnectedRouter>
-    </Provider>
+      <Provider store={store}>
+        <ConnectedRouter history={history}>{children}</ConnectedRouter>
+      </Provider>
     </ThemeProvider>
   );
 }

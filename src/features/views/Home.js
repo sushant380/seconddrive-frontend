@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import * as actions from './redux/actions';
+import {SearchContainer, ResultContainer} from '../layout';
 
 export class Home extends Component {
   static propTypes = {
@@ -12,9 +13,10 @@ export class Home extends Component {
 
   render() {
     return (
-      <div className="views-home">
-        Page Content: views/Home
-      </div>
+      <React.Fragment>
+        <SearchContainer></SearchContainer>
+        <ResultContainer></ResultContainer>
+      </React.Fragment>
     );
   }
 }
@@ -29,11 +31,11 @@ function mapStateToProps(state) {
 /* istanbul ignore next */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ ...actions }, dispatch)
+    actions: bindActionCreators({...actions}, dispatch),
   };
 }
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps,
 )(Home);
