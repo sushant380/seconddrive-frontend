@@ -13,6 +13,8 @@ import CustomRouterLink from '../common/CustomRouterLink';
 import GoogleMapReact from 'google-map-react';
 import { Marker } from '../common';
 
+import Config from '../../Config.json';
+
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 
@@ -121,7 +123,7 @@ const VehicleDetails = props => {
         
         <Grid item xs={12} className={classes.googleMap}>
           <GoogleMapReact 
-            bootstrapURLKeys={{ key: 'AIzaSyBruTMrHnw-X52pfklm5o81oBf902YnlOw' }}
+            bootstrapURLKeys={{ key: Config.google.key }}
             defaultZoom={15}
             defaultCenter={[vehicle.latitude, vehicle.longitude]}
           >
