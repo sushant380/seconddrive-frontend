@@ -12,6 +12,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { connect } from 'react-redux';
 import { Container } from '@material-ui/core';
+import CustomRouterLink from './CustomRouterLink';
+import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -67,7 +69,9 @@ console.log(searchList);
           <TableBody>
             {searchList && searchList.vehicles &&  searchList.vehicles.map((row) => {
               return (
-                <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                <TableRow hover tabIndex={-1} key={row.id} onClick={()=>{
+                  window.location.assign(`/vehicle?id=${row._id}`)
+                }}>
                   {columns.map((column) => {
                     
                     const value = row[column.id];
