@@ -4,5 +4,8 @@
     },
     "backend":{
         "url":"http://localhost:8080"
+    },
+    "frontend":{
+        "tax":0.08
     }
 }

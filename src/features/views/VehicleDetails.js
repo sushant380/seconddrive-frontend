@@ -16,8 +16,7 @@ import GoogleMapReact from 'google-map-react';
 import {Marker} from '../common';
 
 import Config from '../../Config.json';
-
-const AnyReactComponent = ({text}) => <div>{text}</div>;
+import { useAddToCart } from './redux/addToCart';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -41,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const VehicleDetails = (props) => {
   const classes = useStyles();
-  const {searchList} = useHandleSearch();
+  const {searchList, addToCart} = useAddToCart();
   let vehicle = undefined;
   if (searchList.vehicles) {
     const parsed = queryString.parse(props.location.search);
@@ -140,6 +139,7 @@ const VehicleDetails = (props) => {
                 color="default"
                 className={classes.button}
                 startIcon={<ShoppingCartIcon />}
+                onClick={()=>addToCart(vehicle)}
               >Add to cart</Button>
 
             </Box>
