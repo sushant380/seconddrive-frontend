@@ -1,13 +1,13 @@
 import React from 'react';
 
 import {
-  Grid, Card, CardContent, Typography, makeStyles, CardMedia, CardActionArea, CardHeader, Chip, Avatar, IconButton,
+  Grid, Card, CardContent, Typography, makeStyles, CardMedia, CardActionArea, Chip,
 } from '@material-ui/core';
 
 
 // import PropTypes from 'prop-types';
 import { } from './redux/hooks';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import CustomRouterLink from './CustomRouterLink';
 const useStyles = makeStyles((theme) => ({
   cardHeader: {
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const CarGrid = (props) => {
-  const { searchList } = props;
+  const {searchList} = props;
   const classes = useStyles();
   return (
 
@@ -77,7 +77,7 @@ const CarGrid = (props) => {
   );
 };
 const mapStateToProps = (state) => {
-  return { searchList: state.common.searchList };
+  return {searchList: state.common.searchList};
 };
 CarGrid.propTypes = {};
 CarGrid.defaultProps = {};
