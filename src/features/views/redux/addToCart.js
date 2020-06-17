@@ -1,5 +1,5 @@
-import { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {useCallback} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   VIEWS_ADD_TO_CART,
   VIEWS_UPDATE_CART_TOTAL,
@@ -15,7 +15,7 @@ export function addToCart(vehicle) {
     dispatch({
       type: VIEWS_UPDATE_CART_TOTAL,
     });
-  }
+  };
 };
 
 export function useAddToCart() {
@@ -24,14 +24,14 @@ export function useAddToCart() {
   const searchList = useSelector((state) => state.common.searchList);
   const boundAction = useCallback((...params) => dispatch(addToCart(...params)), [dispatch]);
   const lineCount=lineItems.length;
-  return { lineItems, searchList,lineCount, addToCart: boundAction };
+  return {lineItems, searchList, lineCount, addToCart: boundAction};
 }
 
 export function reducer(state, action) {
   switch (action.type) {
     case VIEWS_UPDATE_CART_TOTAL:
       console.log('called ');
-      let { lineItems } = state;
+      let {lineItems} = state;
       const totals = calculateTotal(lineItems);
       return {
         ...state,
@@ -44,14 +44,14 @@ export function reducer(state, action) {
       return {
         ...state,
         lineItems: items,
-        lineCount: items.length
+        lineCount: items.length,
       };
     default:
       return state;
   }
 }
 function cartUpdate(vehicle, lineItems) {
-  console.log(vehicle,lineItems);
+  console.log(vehicle, lineItems);
   const lineItem = lineItems.find((line) => line._id === vehicle._id);
   if (lineItem) {
     lineItem.quantity += 1;
@@ -66,8 +66,8 @@ function cartUpdate(vehicle, lineItems) {
 }
 function calculateTotal(lineItems) {
   let subtotalPrice =0;
-  lineItems.forEach(line => {
-      subtotalPrice += (line.price * line.quantity);
+  lineItems.forEach((line) => {
+    subtotalPrice += (line.price * line.quantity);
   });
   const totalTax = subtotalPrice * Config.frontend.tax;
   const totalPrice = subtotalPrice + totalTax;

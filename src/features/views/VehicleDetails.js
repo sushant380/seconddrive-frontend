@@ -6,7 +6,6 @@ import {
 } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
-import {useHandleSearch} from '../common/redux/hooks';
 import queryString from 'query-string';
 import noimage from '../../images/noimage.jpeg';
 
@@ -16,7 +15,7 @@ import GoogleMapReact from 'google-map-react';
 import {Marker} from '../common';
 
 import Config from '../../Config.json';
-import { useAddToCart } from './redux/addToCart';
+import {useAddToCart} from './redux/addToCart';
 
 
 const useStyles = makeStyles((theme) => ({

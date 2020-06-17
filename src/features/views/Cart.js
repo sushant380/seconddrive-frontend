@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import PropTypes from 'prop-types';
-import { } from './redux/hooks';
-import { Paper, Table, TableRow, TableHead, TableCell, TableBody, TextField, IconButton, Button, makeStyles, Container, Typography } from '@material-ui/core';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { useAddToCart } from './redux/addToCart';
-import { useSelector } from 'react-redux';
+import {useRemoveFromCart} from './redux/hooks';
+import {Paper, Table, TableRow, TableHead, TableCell, TableBody, Button, makeStyles, Container, TableContainer, Grid, Typography, IconButton} from '@material-ui/core';
+
+import {useSelector} from 'react-redux';
+import Config from '../../Config.json';
+import {CustomRouterLink} from '../common';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import {DeleteOutline} from '@material-ui/icons';
 const useStyles = makeStyles(() => ({
   root: {
     width: '100%',
@@ -13,84 +16,88 @@ const useStyles = makeStyles(() => ({
 
   },
 }));
+const ccyFormat = (num) => {
+  return `${num.toFixed(2)}`;
+};
+
 export default function Cart() {
   const classes = useStyles();
-  const lineItems  = useSelector((state) =>state.views.lineItems);
-  const subtotalPrice=useSelector((state) =>state.views.subtotalPrice);
-  const totalTax=useSelector((state) =>state.views.totalTax);
-  const totalPrice=useSelector((state) =>state.views.totalPrice);
+  const {removeFromCart}=useRemoveFromCart();
+  const lineItems = useSelector((state) => state.views.lineItems);
+  const subtotalPrice = useSelector((state) => state.views.subtotalPrice);
+  const totalTax = useSelector((state) => state.views.totalTax);
+  const totalPrice = useSelector((state) => state.views.totalPrice);
   return (
-
     <div className={classes.root}>
+
       <Container maxWidth="md" component="main">
+        <Button component={CustomRouterLink} to={`/`}>
+          <ArrowBackIcon></ArrowBackIcon> Back to search
+        </Button>
         <h1>Your Cart</h1>
-        <Paper className={classes.paper}>
-          <Table className={classes.table}>
+        <TableContainer component={Paper}>
+          <Table className={classes.table} aria-label="spanning table">
             <TableHead>
               <TableRow>
-                <TableCell>Details</TableCell>
-                <TableCell >Location</TableCell>
-                <TableCell >Price</TableCell>
-                <TableCell >Pieces</TableCell>
-                <TableCell >Total Price</TableCell>
-                <TableCell ></TableCell>
+                <TableCell align="center" colSpan={4}>
+                  Details
+                </TableCell>
+                <TableCell align="right">Price</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="right"></TableCell>
+                <TableCell>Description</TableCell>
+                <TableCell align="right">Qty.</TableCell>
+                <TableCell align="right">Unit</TableCell>
+                <TableCell align="right">Sum</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {lineItems.map((node) => (
-                <TableRow key={node._id}>
-                  <TableCell component="th" scope="row">
-                    <Typography variant="h5" component="h2">
-                      {node.model}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                      {node.make}
-                    </Typography>
-                  </TableCell>
-                  <TableCell component="th" scope="row">
-                    <Typography variant="h6" component="h6">
-                      {node.warehouse}
-                    </Typography>
-                  </TableCell>
-                  <TableCell component="th" scope="row">
-                    <Typography variant="h6" component="h6">
-                      {node.price}
-                    </Typography>
-                  </TableCell>
-                  <TableCell align="right">
-                    <TextField
-                      variant="outlined"
-                      className={classes.quantityInput}
-                      defaultValue={node.quantity}
-                      type="number"
-                      margin="normal"
-                    />
-                  </TableCell>
-                  <TableCell component="th" scope="row">
-                    <Typography gutterBottom variant="h6" component="h6">
-                      {node.price*node.quantity}
-                    </Typography>
-                  </TableCell>
-                  <TableCell align="right">
-                    <IconButton>
-                      <DeleteIcon />
+              {lineItems.map((row, index) => (
+                <TableRow key={index}>
+                  <TableCell>
+                    <IconButton onClick={()=>removeFromCart(index)}>
+                      <DeleteOutline></DeleteOutline>
                     </IconButton>
                   </TableCell>
+                  <TableCell>
+                    <Grid container>
+                      <Grid item xs={4}>
+                        <img height="80" 
+                          src="https://i2.wp.com/authenticautosales.com/wp-content/uploads/2020/03/nocarimage.jpg"></img>
+                      </Grid>
+                      <Grid item xs={8}>
+                        <Typography gutterBottom variant="h6" component="h2">
+                          {row.model}
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                          {row.make}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </TableCell>
+                  <TableCell align="right">{row.quantity}</TableCell>
+                  <TableCell align="right">{row.price}</TableCell>
+                  <TableCell align="right">{ccyFormat(row.quantity * row.price)}</TableCell>
                 </TableRow>
               ))}
+              <TableRow >
+                <TableCell rowSpan={3} colSpan={2} />
+                <TableCell colSpan={2}><b>Subtotal</b></TableCell>
+                <TableCell align="right">{ccyFormat(subtotalPrice)}</TableCell>
+              </TableRow>
+              <TableRow >
+                <TableCell ><b>Tax</b></TableCell>
+                <TableCell align="right">{`${(Config.frontend.tax * 100).toFixed(0)} %`}</TableCell>
+                <TableCell align="right">{ccyFormat(totalTax)}</TableCell>
+              </TableRow>
+              <TableRow >
+                <TableCell colSpan={2}><b>Total</b></TableCell>
+                <TableCell align="right"><b>${ccyFormat(totalPrice)}</b></TableCell>
+              </TableRow>
             </TableBody>
           </Table>
-        </Paper>
-        <div className={classes.checkout}>
-          <p>
-            Subtotal: ${subtotalPrice} <br />
-          Taxes: ${totalTax} <br />
-          Total: ${totalPrice}
-          </p>
-          <Button variant="contained" color="primary" >
-            Checkout
-        </Button>
-        </div>
+        </TableContainer>
       </Container>
     </div>
   );

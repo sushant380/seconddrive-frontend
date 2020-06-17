@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import {routerMiddleware} from 'connected-react-router';
 import history from './history';
 import rootReducer from './rootReducer';
+import {saveState} from '../localstorage';
 
 const router = routerMiddleware(history);
 
@@ -32,7 +33,11 @@ function configureStore(initialState) {
           devToolsExtension,
       ),
   );
-
+  store.subscribe(() => {
+    saveState({
+      lineItems: store.getState().views.lineItems,
+    });
+  });
   /* istanbul ignore if  */
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers

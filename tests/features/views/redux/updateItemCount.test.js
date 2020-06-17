@@ -15,8 +15,8 @@ describe('views/redux/updateItemCount', () => {
   it('handles action type VIEWS_UPDATE_ITEM_COUNT correctly', () => {
     const prevState = {};
     const state = reducer(
-      prevState,
-      { type: VIEWS_UPDATE_ITEM_COUNT }
+        prevState,
+        {type: VIEWS_UPDATE_ITEM_COUNT},
     );
     // Should be immutable
     expect(state).not.toBe(prevState);

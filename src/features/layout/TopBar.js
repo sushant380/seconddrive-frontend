@@ -7,8 +7,9 @@ import {Toolbar, Typography, makeStyles, Badge} from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import IconButton from '@material-ui/core/IconButton';
-import { useSelector } from 'react-redux';
-import { CustomRouterLink } from '../common';
+import {useSelector} from 'react-redux';
+import {NavLink as RouterLink} from 'react-router-dom';
+
 const useStyles = makeStyles((theme) => ({
   '@global': {
     ul: {
@@ -63,11 +64,13 @@ export default function TopBar() {
     <AppBar position="static" color="default" elevation={0} className={classes.appBar}
     >
       <Toolbar className={classes.toolbar}>
-        <img src={require('../../images/logo.png')} className="app-logo" alt="logo" />
+        <RouterLink to="/">
+          <img src={require('../../images/logo.png')} className="app-logo" alt="logo" />
+        </RouterLink>
         <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
         </Typography>
         <nav>
-          <IconButton aria-label="cart" component={CustomRouterLink} to={'/cart'}>
+          <IconButton aria-label="cart" href={'/cart'}>
             <Badge badgeContent={lineCount} color="error">
               <ShoppingCartIcon />
             </Badge>

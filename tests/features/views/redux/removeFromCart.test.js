@@ -15,8 +15,8 @@ describe('views/redux/removeFromCart', () => {
   it('handles action type VIEWS_REMOVE_FROM_CART correctly', () => {
     const prevState = {};
     const state = reducer(
-      prevState,
-      { type: VIEWS_REMOVE_FROM_CART }
+        prevState,
+        {type: VIEWS_REMOVE_FROM_CART},
     );
     // Should be immutable
     expect(state).not.toBe(prevState);

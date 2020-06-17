@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import { } from './redux/hooks';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -10,8 +10,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 
 import TableRow from '@material-ui/core/TableRow';
-import { connect } from 'react-redux';
-import { Chip } from '@material-ui/core';
+import {connect} from 'react-redux';
+import {Chip} from '@material-ui/core';
 
 
 const useStyles = makeStyles({
@@ -25,9 +25,9 @@ const useStyles = makeStyles({
 
 
 const columns = [
-  { id: '_id', minWidth: 170 },
-  { id: 'model', label: 'Model', minWidth: 170 },
-  { id: 'make', label: 'Make', minWidth: 100 },
+  {id: '_id', minWidth: 170},
+  {id: 'model', label: 'Model', minWidth: 170},
+  {id: 'make', label: 'Make', minWidth: 100},
   {
     id: 'licensed',
     label: 'Licensed',
@@ -37,8 +37,8 @@ const columns = [
         className={classes.squereChip}
         label="Licensed"
         color="secondary"
-      />
-      : <Chip
+      /> :
+      <Chip
         className={classes.squereChip}
         label="Not licensed"
       />,
@@ -58,7 +58,7 @@ const columns = [
 ];
 const CarTable = (props) => {
   const classes = useStyles();
-  const { searchList } = props;
+  const {searchList} = props;
   console.log(searchList);
 
   return (
@@ -70,7 +70,7 @@ const CarTable = (props) => {
               {columns.map((column) => (
                 <TableCell
                   key={column.id}
-                  style={{ minWidth: column.minWidth }}
+                  style={{minWidth: column.minWidth}}
                 >
                   {column.label}
                 </TableCell>
