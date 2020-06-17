@@ -8,9 +8,10 @@
 import {loadState} from '../../../localstorage';
 
 const persistentState = loadState();
+const items=persistentState?persistentState.lineItems||[]:[];
 const initialState = {
-  lineItems: persistentState.lineItems || [],
-  lineCount: persistentState.lineItems?persistentState.lineItems.length:0,
+  lineItems: items,
+  lineCount: items.length,
   subtotalPrice: 0,
   totalTax: 0,
   totalPrice: 0,

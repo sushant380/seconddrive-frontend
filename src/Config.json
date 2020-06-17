@@ -3,7 +3,8 @@
         "key":"YOUR_API_KEY"
     },
     "backend":{
-        "url":"http://localhost:8080"
+        "url":"http://localhost:8080",
+        "credentials":"admin:admin"
     },
     "frontend":{
         "tax":0.08

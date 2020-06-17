@@ -6,6 +6,7 @@ import {
   COMMON_HANDLE_SEARCH_SUCCESS,
   COMMON_HANDLE_SEARCH_FAILURE,
   COMMON_HANDLE_SEARCH_DISMISS_ERROR,
+  API_BASE_URL
 } from './constants';
 
 
@@ -15,13 +16,14 @@ export function handleSearch(args = {}) {
       type: COMMON_HANDLE_SEARCH_BEGIN,
     });
     const url=args && typeof args!=='string' &&
-    args.sq!==''?`${Config.backend.url}/cars`:
-    `${Config.backend.url}/cars/search?q=${args}`;
+    args.sq!==''?`${API_BASE_URL}/cars`:
+    `${API_BASE_URL}/cars/search?q=${args}`;
     const promise = new Promise((resolve, reject) => {
       fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': 'Basic '+btoa(Config.backend.credentials),
         },
       }).then((response) => response.json())
           .then((data)=>{

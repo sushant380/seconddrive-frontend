@@ -1,5 +1,5 @@
-import {useCallback} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   LAYOUT_HANDLE_VIEW_CHANGE,
 } from './constants';
@@ -15,8 +15,10 @@ export function handleViewChange(args = {}) {
 export function useHandleViewChange() {
   const dispatch = useDispatch();
   const viewDeck = useSelector((state) => state.layout.viewDeck);
-  const boundAction = useCallback((...params) => dispatch(handleViewChange(...params)), [dispatch]);
-  return {viewDeck, handleViewChange: boundAction};
+  const boundAction = useCallback(
+      (...params) => dispatch(handleViewChange(...params)), [dispatch],
+  );
+  return { viewDeck, handleViewChange: boundAction };
 }
 
 export function reducer(state, action) {

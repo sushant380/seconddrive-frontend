@@ -56,14 +56,14 @@ export default function Cart() {
               {lineItems.map((row, index) => (
                 <TableRow key={index}>
                   <TableCell>
-                    <IconButton onClick={()=>removeFromCart(index)}>
+                    <IconButton onClick={()=>removeFromCart(row._id)}>
                       <DeleteOutline></DeleteOutline>
                     </IconButton>
                   </TableCell>
                   <TableCell>
                     <Grid container>
                       <Grid item xs={4}>
-                        <img height="80" 
+                        <img height="80"
                           src="https://i2.wp.com/authenticautosales.com/wp-content/uploads/2020/03/nocarimage.jpg"></img>
                       </Grid>
                       <Grid item xs={8}>

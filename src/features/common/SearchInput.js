@@ -36,7 +36,7 @@ export default function SearchInput() {
               }}
               onKeyDown={(event)=>{
                 console.log(event.key);
-                if (event.key=='Enter') {
+                if (event.key==='Enter') {
                   handleSearch(event.target.value);
                 }
               }}

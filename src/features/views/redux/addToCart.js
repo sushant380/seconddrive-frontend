@@ -30,11 +30,11 @@ export function useAddToCart() {
 export function reducer(state, action) {
   switch (action.type) {
     case VIEWS_UPDATE_CART_TOTAL:
-      console.log('called ');
       let {lineItems} = state;
       const totals = calculateTotal(lineItems);
       return {
         ...state,
+        lineItems,
         ...totals,
       };
     case VIEWS_ADD_TO_CART:
