@@ -47,6 +47,5 @@ export default function SearchInput() {
     </AppBar>
   );
 };
-
 SearchInput.propTypes = {};
 SearchInput.defaultProps = {};

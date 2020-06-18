@@ -5,15 +5,12 @@ import {
   Grid, makeStyles, Container, Box, Typography, Divider, Button, Chip,
 } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-
 import queryString from 'query-string';
 import noimage from '../../images/noimage.jpeg';
-
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import CustomRouterLink from '../common/CustomRouterLink';
 import GoogleMapReact from 'google-map-react';
 import {Marker} from '../common';
-
 import Config from '../../Config.json';
 import {useAddToCart} from './redux/addToCart';
 
@@ -21,9 +18,6 @@ import {useAddToCart} from './redux/addToCart';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-  },
-  paper: {
-
   },
   backgroundNoImage: {
     background: `url(${noimage})`,
@@ -53,10 +47,8 @@ const VehicleDetails = (props) => {
   return (
     <React.Fragment>
       {vehicle && <Container maxWidth="lg" component="main">
-
         <Grid container spacing={1}>
           <Grid item xs={12} md={6} className={classes.backgroundNoImage}>
-
             <Button component={CustomRouterLink} to={`/`}>
               <ArrowBackIcon></ArrowBackIcon> Back to search
             </Button>
@@ -68,7 +60,7 @@ const VehicleDetails = (props) => {
                 <Divider />
               </Box>
               <Typography component="h4" variant="h3" gutterBottom>
-        ${vehicle.price}
+                  ${vehicle.price}
               </Typography>
               <Grid container xs={12} spacing={2} style={{paddingLeft: 30}}>
                 <Grid item xs={3}>
@@ -111,7 +103,6 @@ const VehicleDetails = (props) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={9}>{`${vehicle.warehouse}, ${vehicle.location}`}</Grid>
-
                 <Grid item xs={12} className={classes.googleMap}>
                   <GoogleMapReact
                     bootstrapURLKeys={{key: Config.google.key}}
@@ -127,12 +118,8 @@ const VehicleDetails = (props) => {
                   </GoogleMapReact>
                 </Grid>
               </Grid>
-
-
               <p >Description</p>
-
               <p>Need to add something</p>
-
               <Button
                 variant="contained"
                 color="default"
@@ -140,15 +127,11 @@ const VehicleDetails = (props) => {
                 startIcon={<ShoppingCartIcon />}
                 onClick={()=>addToCart(vehicle)}
               >Add to cart</Button>
-
             </Box>
           </Grid>
-
         </Grid>
       </Container>
-
       }
-
     </React.Fragment>
   );
 };

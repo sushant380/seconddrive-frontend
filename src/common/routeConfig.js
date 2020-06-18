@@ -1,7 +1,5 @@
-import {App} from '../features/home';
+import {App} from '../features/layout';
 import {PageNotFound} from '../features/common';
-import homeRoute from '../features/home/route';
-import commonRoute from '../features/common/route';
 import _ from 'lodash';
 import layoutRoute from '../features/layout/route';
 import viewsRoute from '../features/views/route';
@@ -10,8 +8,6 @@ import viewsRoute from '../features/views/route';
 // This is used for Rekit cmds to register routes config for new features,
 // and remove config when remove features, etc.
 const childRoutes = [
-  homeRoute,
-  commonRoute,
   layoutRoute,
   viewsRoute,
 ];

@@ -8,7 +8,7 @@ import DehazeIcon from '@material-ui/icons/Dehaze';
 import {useHandleViewChange} from './redux/hooks';
 import {Container} from '@material-ui/core';
 
-const ResultContainer = (props) => {
+const ResultContainer = () => {
   const {viewDeck, handleViewChange} = useHandleViewChange();
 
   return (
