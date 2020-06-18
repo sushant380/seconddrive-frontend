@@ -2,7 +2,6 @@ import {combineReducers} from 'redux';
 // import { routerReducer } from 'react-router-redux';
 import {connectRouter} from 'connected-react-router';
 import history from './history';
-import homeReducer from '../features/home/redux/reducer';
 import commonReducer from '../features/common/redux/reducer';
 import layoutReducer from '../features/layout/redux/reducer';
 import viewsReducer from '../features/views/redux/reducer';
@@ -15,7 +14,6 @@ import viewsReducer from '../features/views/redux/reducer';
 
 const reducerMap = {
   router: connectRouter(history),
-  home: homeReducer,
   common: commonReducer,
   layout: layoutReducer,
   views: viewsReducer,

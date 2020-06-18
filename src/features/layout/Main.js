@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes, { object } from 'prop-types';
 import {} from './redux/hooks';
 import {TopBar, Footer} from '.';
 import {useHandleSearch} from '../common/redux/hooks';
@@ -23,6 +23,10 @@ const Main=(props)=> {
   );
 };
 
-Main.propTypes = {};
-Main.defaultProps = {};
+Main.propTypes = {
+  children: PropTypes.arrayOf(object).isRequired,
+};
+Main.defaultProps = {
+  children: [],
+};
 export default Main;

@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { } from './redux/hooks';
 import {makeStyles} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -59,7 +59,6 @@ const columns = [
 const CarTable = (props) => {
   const classes = useStyles();
   const {searchList} = props;
-  console.log(searchList);
 
   return (
     <Paper className={classes.root}>
@@ -107,8 +106,12 @@ const CarTable = (props) => {
   );
 };
 
-CarTable.propTypes = {};
-CarTable.defaultProps = {};
+CarTable.propTypes = {
+  searchList: PropTypes.arrayOf(Object).isRequired,
+};
+CarTable.defaultProps = {
+  searchList: [],
+};
 const mapStateToProps = (state) => {
   return {
     searchList: state.common.searchList,

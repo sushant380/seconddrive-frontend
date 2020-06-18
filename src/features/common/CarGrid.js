@@ -1,14 +1,11 @@
 import React from 'react';
-
 import {
   Grid, Card, CardContent, Typography, makeStyles, CardMedia, CardActionArea, Chip,
 } from '@material-ui/core';
-
-
-// import PropTypes from 'prop-types';
-import { } from './redux/hooks';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import CustomRouterLink from './CustomRouterLink';
+
 const useStyles = makeStyles((theme) => ({
   cardHeader: {
     backgroundColor:
@@ -79,7 +76,11 @@ const CarGrid = (props) => {
 const mapStateToProps = (state) => {
   return {searchList: state.common.searchList};
 };
-CarGrid.propTypes = {};
-CarGrid.defaultProps = {};
+CarGrid.propTypes = {
+  searchList: PropTypes.arrayOf(Object).isRequired,
+};
+CarGrid.defaultProps = {
+  searchList: [],
+};
 export default connect(mapStateToProps)(CarGrid);
 
