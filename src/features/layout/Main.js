@@ -24,9 +24,9 @@ const Main=(props)=> {
 };
 
 Main.propTypes = {
-  children: PropTypes.arrayOf(object).isRequired,
+  children: PropTypes.object.isRequired,
 };
 Main.defaultProps = {
-  children: [],
+  children: {},
 };
 export default Main;

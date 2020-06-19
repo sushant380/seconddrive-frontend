@@ -63,8 +63,8 @@ export default function Cart() {
                   <TableCell>
                     <Grid container>
                       <Grid item xs={4}>
-                        <img height="80"
-                          src="https://i2.wp.com/authenticautosales.com/wp-content/uploads/2020/03/nocarimage.jpg"></img>
+                        <image height="80" alt="no car image"
+                          src="https://i2.wp.com/authenticautosales.com/wp-content/uploads/2020/03/nocarimage.jpg"></image>
                       </Grid>
                       <Grid item xs={8}>
                         <Typography gutterBottom variant="h6" component="h2">
