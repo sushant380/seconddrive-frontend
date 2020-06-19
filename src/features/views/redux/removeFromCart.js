@@ -20,8 +20,9 @@ export function removeFromCart(lineId) {
 export function useRemoveFromCart() {
   const dispatch = useDispatch();
   const lineItems = useSelector((state) => state.views.lineItems);
+  const lineCount = useSelector((state) => state.views.lineCount);
   const boundAction = useCallback((...params) => dispatch(removeFromCart(...params)), [dispatch]);
-  return {lineItems, removeFromCart: boundAction};
+  return {lineItems, lineCount, removeFromCart: boundAction};
 }
 
 export function reducer(state, action) {
